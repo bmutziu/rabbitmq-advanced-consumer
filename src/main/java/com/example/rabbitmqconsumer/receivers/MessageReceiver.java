@@ -18,18 +18,18 @@ public class MessageReceiver {
             containerFactory = "rabbitListenerContainerFactory"
     )
     public void receiveMessage(MyMessage message) throws Exception {
-        System.out.println("-----------["+ Instant.now()+"]Received: "+message.toString());
-        Thread.sleep(5000);
+        System.out.println("["+ Instant.now()+"] Received: "+message.toString());
+        Thread.sleep(9000);
         if(message.getMessageId() > 5) {
             throw new Exception("my unknown error");
         } else if(message.getMessageId() == 5){
-            throw new FailedProcessException("test error");
+            throw new FailedProcessException("failed process exception");
         } else if(message.getMessageId() == 3){
-            System.out.println("Sleep for another 60 seconds");
-            Thread.sleep(60000);
-            System.out.println("---------Listener method executed successfully after 65 seconds");
+            System.out.println("Sleep for another 27 seconds");
+            Thread.sleep(27000);
+            System.out.println("Listener method executed successfully after 36 seconds");
         } else {
-            System.out.println("---------Listner method executed successfully");
+            System.out.println("Listener method executed successfully w/o sleep");
         }
     }
 
